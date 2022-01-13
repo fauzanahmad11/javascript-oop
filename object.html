@@ -15,14 +15,7 @@
         ● Sebenarnya kita sudah belajar tipe data object, dengan cara membuat variable dengan tipe data object
         ● Namun pembuatan object menggunakan tipe data object, akan membuat object yang selalu unik, sedangkan dalam OOP, biasanya kita akan membuat class sebagai cetakan, sehingga bisa membuat object dengan karakteristik yang sama berkali, kali, tanpa harus mendeklarasikan object berkali-kali seperti menggunakan tipe data object
 
-        ## Membuat Constructor Function
-        ● Sebelum EcmaScript versi 6, pembuatan class, biasanya menggunakan function. Hal ini
-        dikarenakan sebenarnya JavaScript bukanlah bahasa pemrograman yang fokus ke OOP
-        ● Untuk membuat class di JavaScript lama, kita bisa membuat function
-        ● Function ini kita sebut dengan Constructor Function
-
-        ## Membuat Object dari Constructor Function
-        ● Setelah kita membuat class, jika kita ingin membuat object dari class tersebut, kita bisa menggunakan kata kunci new, lalu diikuti dengan nama constructor function nya
+        
         */
 
         // Kode : Membuat Object dengan Object
@@ -35,18 +28,97 @@
             lastName: "DArat"
         };
 
+        /*
+        ## Membuat Constructor Function
+        ● Sebelum EcmaScript versi 6, pembuatan class, biasanya menggunakan function. Hal ini
+        dikarenakan sebenarnya JavaScript bukanlah bahasa pemrograman yang fokus ke OOP
+        ● Untuk membuat class di JavaScript lama, kita bisa membuat function
+        ● Function ini kita sebut dengan Constructor Function
+        */
         // Kode : Constructor Function
         function PersonHuman() {
 
         }
 
-        // Kode : Membuat Object
-        function Person() {
+        /*
+        ## Membuat Object dari Constructor Function
+        ● Setelah kita membuat class, jika kita ingin membuat object dari class tersebut, kita bisa menggunakan kata kunci new, lalu diikuti dengan nama constructor function nya
+        */
+        // Kode : Membuat Object dari Constructor Function
+        {
+            function Person() {
 
+            }
+
+            const zanworld = new Person(); //membuat object new NamaConstructorFunction();
+            const dopping = new Person(); //membuat object new NamaConstructorFunction();
+            zanworld.firstName = "Fauzan";
+            console.log(zanworld);
         }
 
-        const zan = new Person(); //object
-        const dopping = new Person(); //object
+        /*
+        ## Property di Constructor Function
+        ● Sebenarnya setelah kita membuat object, kita bisa dengan mudah menambahkan property ke dalam object tersebut hanya dengan menggunakan nama variable nya, diikuti tanda titik dan nama property
+        ● Namun jika seperti itu, alhasil, constructor function yang sudah kita buat tidak terlalu berguna, karena property nya hanya ada di object yang kita tambahkan property
+        ● Untuk menambahkan property di dalam semua object yang dibuat dari constructor function, kita bisa menggunakan kata kunci this lalu diikuti dengan nama property nya
+        */
+
+        // Kode : Membuat Property di Constructor Function
+        {
+            function Person() {
+                this.firstName = "";
+                this.lastName = "";
+            }
+
+            const zanworld = new Person();
+            const dopping = new Person();
+            zanworld.firstName = "Faiuzan";
+            zanworld.lastName = "Ahmad";
+            console.log(zanworld);
+            console.log(dopping);
+        }
+
+        /*
+        ## Method di Constructor Function
+        ● Sama seperti pada tipe data object biasanya, kita juga bisa menambahkan method di dalam constructor function
+        ● Jika kita tambahkan method di constructor function, secara otomatis object yang dibuat akan memiliki method tersebut
+        */
+
+        // Kode : Membuat Method di Constructor Function
+        {
+            function Person() {
+                this.firstName = "";
+                this.lastName = "";
+                this.sayHello = (name) => {
+                    console.info(`Hello ${name}, my name is ${this.firstName}`);
+                }
+            }
+
+            const createNew = new Person();
+            createNew.firstName = "Fauzan";
+            createNew.lastName = "Ahmad";
+            createNew.sayHello("Jef");
+        }
+
+        /*
+        ## Parameter di Constructor Function
+        ● Karena dalam JavaScript, class adalah berbentuk function, jadi secara default, function tersebut bisa memiliki parameter
+        ● Constructor function sama seperti function biasanya, bisa memiliki parameter, hal ini membuat ketika kita membuat object, kita bisa mengirim langsung data lewat parameter di constructor function tersebut
+        */
+
+        // Kode : Membuat Parameter di Constructor Function
+        {
+            function Person(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.sayHello = (name) => {
+                    console.info(`Hello ${name}, my name is ${this.firstName}`);
+                }
+            }
+
+            const createNew = new Person("Fauzan", "Ahmad");
+            createNew.sayHello("Jef");
+        }
     </script>
 </body>
 
