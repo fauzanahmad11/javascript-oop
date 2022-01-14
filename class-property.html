@@ -12,28 +12,19 @@
     <script>
         {
             /*
-            ## Method di Class
-            ● Membuat method di class sebenarnya bisa dilakukan dengan cara seperti menambahkan method di constructor function
-            ● Namun, hal tersebut sebenarnya menambahkan method ke dalam instance object
-            ● Khusus untuk method sebaiknya kita menambahkan ke prototype, bukan ke instance object
-            ● Untung nya di class, ada cara mudah menambahkan method dan secara otomatis ditambahkan ke prototype
+            ## Property di Class
+            ● Sama seperti pada constructor function, dalam class pun kita bisa menambahkan property
+            ● Karena hasil akhirnya adalah sebuah object, jadi menambahkan property di class bisa juga dilakukan di instance object nya
     
-            Kode : Membuat Method di Class
+            Kode : Membuat Property di Class
             */
             class Person {
                 constructor(data) {
                     this.name = data;
                 }
-                sayHello(name) {
-                    console.info(`Hi ${name}, My name is ${this.name}`);
-                }
             }
             const fauzan = new Person("Fauzan");
-            fauzan.sayHello("Naruto");
             console.log(fauzan);
-            const budi = new Person("Budi");
-            budi.sayHello("Naruto");
-            console.log(budi);
         }
 
     </script>
