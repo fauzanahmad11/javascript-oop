@@ -10,23 +10,78 @@
 
 <body>
     <script>
+        /*
+        ## Cara Kerja Prototype Inheritance
+        ● Ketika kita mengakses property di object instance, pertama akan di cek apakah di
+        ● Bagaimana bisa property di prototype diakses dari object instance? object tersebut terdapat property tersebut atau tidak, jika tidak, maka akan di cek di __proto__ (prototype) nya, jika masih tidak ada, akan di cek lagi di __proto__ (prototype) yang lebih tinggi, begitu seterusnya, sampai berakhir di Object Prototype
+
+        Kode : Cara Kerja Prototype Inheritance
+        */
+
+        // =================HERE==================
+
         {
             /*
-            ## Kata Kunci Class
-            # Membuat Class
-            ● Sejak EcmaScript versi 6, diperkenalkan kata kunci baru, yaitu class, ini merupakan kata kunci yang digunakan untuk membuat class di JavaScript
-            ● Dengan kata kunci class, kita tidak perlu lagi menggunakan constructor function untuk membuat class
+            ## Prototype Inheritance
+            ● Sekarang kita sudah tahu, bahwa prototype selalu memiliki parent, artinya dia adalah turunan, parent tertinggi adalah Object prototype
+            ● Pertanyaannya bagaimana jika kita ingin melakukan inheritance ke Prototype lain?
+            ● Hal ini juga bisa dilakukan, namun agak sedikit tricky, karena hal ini, sebenarnya untuk JavaScript modern, tidak direkomendasikan lagi praktek OOP menggunakan Prototype, karena di ES6 sudah dikenalkan kata kunci class yang akan nanti dibahas di chapter tersendiri
     
-            Kode : Membuat Class
+            Kode : Prototype Inheritance Salah (1)
             */
-            // class Person = {
+            console.log(`=====Prototype Inheritance Salah (1)=====`);
+            function Employee(name) {
+                this.name = name;
+            }
 
-            // }
+            function Manager(name) {
+                this.name = name;
+            }
 
-            // const fauzan = new Person();
-            // console.log(fauzan);
+            Manager.prototype = Employee.prototype; // artinya kita me-replace employe bulat2 ke manager dengan "="
+
+            Manager.prototype.sayHello = function (name) {
+                console.log(`Hello ${name}, my name is Manager ${this.name}`);
+            }
+
+            Employee.prototype.sayHello = function (name) {
+                console.log(`Hello ${name}, my name is Employee ${this.name}`);
+            }
+            const employee = new Employee("Bundo");
+            employee.sayHello("Fauzan");
+            const manager = new Manager("Jomor");
+            manager.sayHello("Fauzan");
         }
 
+        {
+            /*
+            Kode : Prototype Inheritance Benar (1)
+            */
+            console.log(`=====Prototype Inheritance Benar (1)=====`);
+            function Employee(name) {
+                this.name = name;
+            }
+
+            function Manager(name) {
+                this.name = name;
+            }
+
+            Manager.prototype = Object.create(Employee.prototype); // cara yang benar
+
+            Manager.prototype.sayHello = function (name) {
+                console.log(`Hello ${name}, my name is Manager ${this.name}`);
+            }
+
+            Employee.prototype.sayHello = function (name) {
+                console.log(`Hello ${name}, my name is Employee ${this.name}`);
+            }
+            const employee = new Employee("Bundo");
+            employee.sayHello("Fauzan");
+            const manager = new Manager("Jomor");
+            manager.sayHello("Fauzan");
+            console.info(employee);
+            console.info(manager);
+        }
     </script>
 </body>
 
