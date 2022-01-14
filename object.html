@@ -100,25 +100,7 @@
             createNew.sayHello("Jef");
         }
 
-        /*
-        ## Parameter di Constructor Function
-        ● Karena dalam JavaScript, class adalah berbentuk function, jadi secara default, function tersebut bisa memiliki parameter
-        ● Constructor function sama seperti function biasanya, bisa memiliki parameter, hal ini membuat ketika kita membuat object, kita bisa mengirim langsung data lewat parameter di constructor function tersebut
-        */
 
-        // Kode : Membuat Parameter di Constructor Function
-        {
-            function Person(firstName, lastName) {
-                this.firstName = firstName;
-                this.lastName = lastName;
-                this.sayHello = (name) => {
-                    console.info(`Hello ${name}, my name is ${this.firstName}`);
-                }
-            }
-
-            const createNew = new Person("Fauzan", "Ahmad");
-            createNew.sayHello("Jef");
-        }
     </script>
 </body>
 
