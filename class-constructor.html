@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prototype Inheritance </title>
+    <title>Class Constructor</title>
 </head>
 
 <body>
@@ -20,14 +20,11 @@
             Kode : Membuat Class
             */
             class Person {
-
+                constructor(data) {
+                    console.info(`Hasil dari ${data} + 20 adalah ${data + 20}`);
+                }
             }
-            Person.prototype.sayHello = (name) => {
-                console.log(`Hi ${name}`);
-            }
-            const fauzan = new Person();
-            fauzan.sayHello("Jefmi");
-            console.log(fauzan);
+            const fauzan = new Person(30);
         }
 
     </script>
