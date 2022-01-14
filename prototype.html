@@ -5,35 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constructor Inheritance</title>
+    <title>Prototype</title>
 </head>
 
 <body>
     <script>
-        /*
-        ## Constructor Inheritance
-        ● Dalam constructor kita biasanya membuat property baik itu berisi value ataupun function
-        ● Di dalam constructor, kita bisa memanggil constructor lain, dengan begitu kita bisa mewarisi semua property yang dibuat di constructor lain tersebut
-        ● Untuk memanggil constructor lain, kita bisa menggunakan NamaConstructor.call(this, parameter)
-        */
-        // Kode : Membuat Constructor Inheritance
-        {
-            function Employee(firstName) {
-                this.firstName = firstName;
-                this.sayHello = function (name) {
-                    console.log(`Hi ${name}, my name is ${this.firstName}`);
-                }
-            }
-
-            function Manager(firstName, lastName) {
-                Employee.call(this, firstName);
-                this.lastName = lastName;
-            }
-
-            const createName = new Manager("Fauzan", "Ahmad");
-            createName.sayHello("Wahyu");
-        }
-
         /*
         ## Prototype
         ● JavaScript sebelumnya dikenal dengan pemrograman berbasis prototype
@@ -47,32 +23,22 @@
         Person.prototype
         ● Saat kita membuat sebuah object instance, secara otomatis object tersebut adalah turunan dari Constructor.prototype nya
         ● Untuk mengakses prototype milih sebuah instance, kita bisa menggunakan __proto__
-        */
-        // Kode : Object Instance
-        {
-            const eko = new Person("Fauzan", "Ahmad");
-            const aldo = new Person("Aldo", "Januar");
 
-            console.log(eko);
-            console.log(aldo);
-        }
-
-        /*
         ## Menambah Property ke Prototype
         ● Property mirip object, dimana kita bisa menambah property baik itu value ataupun method
         ● Saat kita menambah sebuah property ke Prototype, secara otomatis, semua object instance yang turunan dari prototype tersebut akan memiliki property tersebut
         */
-        // Kode : Menambah Property ke Instance Object
+        // Kode : Object Instance
         {
-            const fauzan = new Person("Fauzan", "Khannedy");
-
-            // ini hanya instance object fauzan
-            fauzan.sayBye = function () {
-                console.info("Good Bye");
+            function Person(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.sayHello = (name) => {
+                    console.info(`Hello ${name}, my name is ${this.firstName}`);
+                }
             }
-        }
-        // Kode : Menambahkan Property ke Prototype
-        {
+
+            // Kode : Menambahkan Property ke Prototype
             Person.prototype.sayBye = function () {
                 console.info("Good Bye");
             }
@@ -80,6 +46,24 @@
             Person.prototype.run = function () {
                 console.info(`${this.firstName} is running`);
             }
+
+            const fauzan = new Person("Fauzan", "Ahmad");
+            fauzan.sayBye = () => {
+                console.log(`Bay Cank`);
+            }
+            const aldo = new Person("Aldo", "Januar");
+
+            // Kode : Menambah Property ke Instance Object
+            // ini hanya instance object fauzan
+            // fauzan.sayBye = function () {
+            //     console.info("Good Bye");
+            // }
+
+            console.log(fauzan);
+            console.log(aldo);
+
+            fauzan.run();
+            fauzan.sayBye();
         }
 
         /*
