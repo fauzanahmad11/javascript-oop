@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getter and Setter</title>
+</head>
+
+<body>
+    <script>
+        /*
+        ## Getter dan Setter di Class
+        ● Class juga mendukung pembuatan getter dan setter
+        ● Perlu diingat, getter dan setter ini akan berada di prototype, bukan di instance object
+
+        Kode : Super Method
+        */
+        class Person {
+            constructor(firtsName, lastName) {
+                this.firtsName = firtsName;
+                this.lastName = lastName;
+            }
+
+            get fullName() {
+                return `${this.firtsName} ${this.lastName}`;
+            }
+
+            set fullName(value) {
+                const result = value.split(" ");
+                this.firtsName = result[0];
+                this.lastName = result[1];
+            }
+        }
+
+        const newPerson = new Person("Fauzan", "Ahmad");
+        console.log(newPerson);
+        console.log(newPerson.fullName);
+
+        newPerson.fullName = "Roba Ahmad";
+        console.log(newPerson);
+    </script>
+</body>
+
+</html>
