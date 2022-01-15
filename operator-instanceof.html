@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator instanceof</title>
+</head>
+
+<body>
+    <script>
+        /*
+        ## Operator instanceof
+        ● Kadang ada kasus kita ingin mengecek apakah sebuah object merupakan instance dari class tertentu atau bukan
+        ● Kita tidak bisa menggunakan operator typeof, karena object dari class, jika kita gunakan operator typeof, hasilnya adalah “object”
+        ● Operator instanceof akan menghasilkan boolean, true jika benar object tersebut adalah instance object nya, atau false jika bukan
+
+        ## Operator instanceof di Class Inheritance
+        ● Operator instanceof mendukung class inheritance, artinya instanceof juga bisa digunakan untuk mengecek, apakah sebuah object adalah instance dari class tertentu, atau turunan dari class tertentu?
+
+        Kode : Private Class Method
+        */
+
+        {
+            class Employee {
+
+            }
+            class Manager {
+
+            }
+            const budi = new Employee();
+            const eko = new Manager();
+
+            console.info(budi instanceof Employee); //true
+            console.info(budi instanceof Manager); // false
+            console.info(eko instanceof Employee); //false
+            console.info(eko instanceof Manager); // true
+        }
+        {
+            // Kode : Operator instanceof di Inheritance
+            class Employee {
+
+            }
+            class Manager extends Employee {
+
+            }
+            const budi = new Employee();
+            const eko = new Manager();
+
+            console.info(budi instanceof Employee); //true
+            console.info(budi instanceof Manager); // false
+            // true karna Manager adalah turunan dari Employee
+            console.info(eko instanceof Employee); //true
+            console.info(eko instanceof Manager); // true
+        }
+
+    </script>
+</body>
+
+
+</html>

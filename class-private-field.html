@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Class Field</title>
+</head>
+
+<body>
+
+    <button id="dec">-</button>
+    <input type="number" id="in">
+    <button id="inc">+</button>
+    <script>
+        /*
+        ## Private Class Field
+        ● Secara default, saat kita menambahkan field, maka field tersebut bisa diakses dari manapun
+        ● Jika kita ingin membuat field yang bersifat private (hanya bisa diakses di dalam class), kita bisa menggunakan tanda # sebelum nama field nya
+        ● Ini dinamakan private class field, dan hanya bisa diakses dari dalam class saja
+        Kode : Private Class Field
+        */
+
+        class Counter {
+            #counter = 0;
+
+            increment() {
+                this.#counter++;
+            }
+
+            decrement() {
+                this.#counter--;
+            }
+
+            get() {
+                return this.#counter;
+            }
+        }
+
+        const inc = document.getElementById("inc");
+        const input = document.getElementById("in");
+        const dec = document.getElementById("dec");
+        const counter = new Counter();
+
+        inc.addEventListener("click", () => {
+            counter.increment();
+            input.value = counter.get();
+        });
+
+        dec.addEventListener("click", () => {
+            if (input.value > 0) {
+                counter.decrement();
+            }
+            input.value = counter.get();
+        });
+
+        counter.increment();
+        counter.increment();
+        counter.increment();
+        counter.increment();
+        counter.increment();
+        console.info(counter.get());
+    </script>
+</body>
+
+</html>
