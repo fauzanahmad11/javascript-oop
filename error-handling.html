@@ -31,6 +31,7 @@
         Kode : Error Handling
         */
 
+        console.info("===== Kode : Error Handling =====");
         class MathUtil {
             static sum(...numbers) {
                 if (numbers.length === 0) {
@@ -45,33 +46,29 @@
             }
         }
 
-        {
-            try {
-                console.log(MathUtil.sum());
-                console.log("Kode Block Try Akan Berhenti")
-            } catch (error) {
-                console.log(`Terjadi error : ${error.message}`);
-            }
+        try {
+            console.log(MathUtil.sum());
+            console.log("Kode Block Try Akan Berhenti")
+        } catch (error) {
+            console.log(`Terjadi error : ${error.message}`);
         }
+        console.info("Fauzan. Kode program terus berjalan");
 
-        console.info("Kode Program Tidak Akan Berhenti");
-        console.info(MathUtil.sum(1, 1, 1, 1, 1, 1));
-        console.info(MathUtil.sum());
 
         // Kode : Kata Kunci finally
-
-        {
-            try {
-                console.log(MathUtil.sum());
-                console.log("Kode Block Try Akan Berhenti")
-            } catch (error) {
-                console.log(`Terjadi error : ${error.message}`);
-            } finally {
-                console.log(`Kode program selesai`);
-            }
+        console.info("===== Kode : Kata Kunci finally =====");
+        try {
+            console.log(MathUtil.sum());
+            console.log("Kode Block Try Akan Berhenti")
+        } catch (error) {
+            console.log(`Terjadi error : ${error.message}`);
+        } finally {
+            console.log(`Kode program selesai`);
         }
+        console.log(`JAN JAN`);
 
         // Kode : Try finally
+        console.info("===== Kode : Try finally =====");
 
         class Counter {
             constructor() {
