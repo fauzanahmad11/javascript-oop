@@ -20,6 +20,7 @@
         Kode : Class ValidationError
         */
 
+        console.info("===== Membuat Error =====");
         class ValidationError extends Error {
             constructor(message, field) {
                 super(message);
@@ -42,10 +43,22 @@
             }
         }
 
-        // Kode : Try Catch
-
+        console.info("===== Test Menggunakan ErrorValidation Yang Sudah dibuat =====");
         try {
             console.log(MathUtil.sum());
+            console.log("Kode Block Try Akan Berhenti")
+        } catch (error) {
+            console.log(`Terjadi error : ${error.message}`);
+        } finally {
+            console.log(`Kode program selesai`);
+        }
+        console.log(`JAN JAN`);
+
+        // Kode : Try Catch
+        console.info("===== Menampilkan error message dangan error pada field =====");
+        try {
+            console.log(MathUtil.sum());
+            console.log("Fauzan");
         } catch (error) {
             if (error instanceof ValidationError) {
                 console.error(`Terjadi error di field ${error.field} dengan error : ${error.message}`);
@@ -53,6 +66,7 @@
                 console.error(`Terjadi error : ${error.message}`)
             }
         }
+        console.log(`JAN JAN`);
     </script>
 </body>
 
